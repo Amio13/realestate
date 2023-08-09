@@ -1,25 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Header.css'
-// import logo from '../public/logo.png'
+import { BiMenuAltRight } from "react-icons/bi";
+import OutsideClickHandler from 'react-outside-click-handler';
 const Header = () => {
+    const [menuOpened, setMenuOpened] = useState(false)
+
+const getMenuStyles =(menuOpened)=>{
+    if (document.documentElement.clientWidth <= 800)
+    {
+        return{right: !menuOpened && "-100%"}
+    }
+    
+}
   return (
     <section className='h-wrapper'>
-    <div className=' flexCenter paddings h-container'>
+    <div className=' flexCenter paddings innerWidth h-container'>
     
     <img src='./logo.png' alt='logo' width ={100}/>
-
-    <div className= 'flexCenter h-menu'>
+    
+    <OutsideClickHandler
+    onOutsideClick={()=>{
+        setMenuOpened(false)
+    }}
+    >
+    <div className= 'flexCenter h-menu'
+    style={getMenuStyles (menuOpened)}
+    >
     <a
-            href=''
+            href='#res'
         >Residencies</a>
         <a
-            href=''
+            href='#va'
         >Our Values</a>
         <a
-            href=''
+           href='#ca'
         >Contacts Us</a>
         <a
-            href=''
+            href='#gs'
         >Get Started</a>
         
         <button className='button'>
@@ -28,7 +45,19 @@ const Header = () => {
         >Contact</a>
         </button>
     </div>
+
+    </OutsideClickHandler>
+
+   
+    <div
+          className="menu-icon"
+          onClick={() => setMenuOpened((prev) => !prev)}
+        >
+          <BiMenuAltRight size={30} />
+        </div>
+   
     </div>
+   
        </section>
   )
 }

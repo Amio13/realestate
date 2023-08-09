@@ -2,18 +2,26 @@ import React from 'react'
 import './Hero.css'
 import {HiLocationMarker} from 'react-icons/hi'
 import CountUp from 'react-countup/'
+import { motion } from 'framer-motion'
 const Hero = () => {
   return (
-    <section className='hero-wrapper'>
-        <div className='paddings innerWidth hero-container flexCenter'>
+    <section className=' hero-wrapper'>
+        <div className='paddings innerWidth flexCenter hero-container '>
           {/* left side */}
           <div className='flexColStart hero-left'>
 
-             <div className='hero-tittle'>
+             <div className='hero-title'>
              <div className='orange-circle'/>
-                <h1>
+                <motion.h1
+                initial={{y:'2rem',opacity: 0}}
+                animate ={{y: 0, opacity:1}}
+                transition={{
+                  duration: 4,
+                  type: 'spring'
+                }}
+                >
                    Get <br /> a Home <br />from a House
-                </h1>
+                </motion.h1>
              </div>
              <div className=' flexColStart hero-des'>
               <span className='secondaryText'> Find your dream properties at affodable rate and at desirable taste</span>
@@ -25,7 +33,7 @@ const Hero = () => {
                       <button className='button'>search</button>
                        </div>
                <div className='flexCenter stats'> 
-               <div className='flexColStart stat'>
+               <div className='flexColCenter stat'>
                 <span>
                    <CountUp start ={56} end={90} duration ={4}/>
                    <span>+</span>
@@ -35,7 +43,7 @@ const Hero = () => {
                 </span>
                </div>
 
-               <div className='flexColStart stat'>
+               <div className='flexColCenter stat'>
                 <span>
                    <CountUp start ={34} end={56} duration ={4}/>
                    <span>+</span>
@@ -45,7 +53,7 @@ const Hero = () => {
                 </span>
                </div>
 
-               <div className='flexColStart stat'>
+               <div className='flexColCenter stat'>
                 <span>
                    <CountUp end={19}/>
                    <span>+</span>
@@ -60,7 +68,17 @@ const Hero = () => {
           {/* right side */}
           <div className=' flexCenter hero-right'>
             <div className='image-container'>
-            <img src='./hero-image.png' alt=''/>
+            <motion.div
+            initial={{ x: "7rem", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              duration: 2,
+              type: "ease-in",
+            }}
+           
+          >
+            <img src="./hero-image.png" alt="houses" />
+          </motion.div>
             </div>
            
           </div>

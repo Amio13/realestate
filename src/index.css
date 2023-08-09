@@ -94,7 +94,7 @@ a {
 }
 .button:hover{
 cursor: pointer;
-transform: scale(1.1) ;
+transform: scale() ;
 }
 /* media queries */
 @media (min-width: 1536px) {
